@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheck;
 
+    [Header("Air Control")]
+    [SerializeField] float airControl = 1f;
+
     private float horizontal;
 
     private void Awake()
@@ -25,7 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        float targetSpeed = horizontal * speed;
+
+        float control = IsGrounded() ? 1f : airControl;
+
+        float newX = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, control);
+
+        rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
     }
 
     #region PLAYER_CONTROLS
@@ -36,9 +45,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        // When jump is first pressed
         if (context.performed && IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+        }
+
+        // When jump is released early
+        if (context.canceled && rb.linearVelocity.y > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
     }
     #endregion
