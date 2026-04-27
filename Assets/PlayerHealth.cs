@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public string playerName = "Player1";
+
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -10,20 +12,19 @@ public class PlayerHealth : MonoBehaviour
 
     public Transform respawnPoint;
 
+    private bool gameOverTriggered = false;
+
     void Start()
     {
         currentHealth = maxHealth;
         currentLives = maxLives;
-
-        Debug.Log(gameObject.name + " Health: " + currentHealth);
-        Debug.Log(gameObject.name + " Lives: " + currentLives);
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        if (gameOverTriggered) return;
 
-        Debug.Log(gameObject.name + " took damage. Health: " + currentHealth);
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
@@ -31,8 +32,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+  
     public void InstantKill()
     {
+        if (gameOverTriggered) return;
+
         currentHealth = 0;
         LoseLife();
     }
@@ -41,12 +45,9 @@ public class PlayerHealth : MonoBehaviour
     {
         currentLives--;
 
-        Debug.Log(gameObject.name + " lost a life. Lives left: " + currentLives);
-
         if (currentLives <= 0)
         {
-            Debug.Log(gameObject.name + " lost the game!");
-            gameObject.SetActive(false); // player disappears
+            TriggerGameOver();
         }
         else
         {
@@ -58,9 +59,38 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        // Move player to spawn point
-        transform.position = respawnPoint.position;
+        if (respawnPoint != null)
+        {
+            transform.position = respawnPoint.position;
+        }
+    }
 
-        Debug.Log(gameObject.name + " respawned with full health!");
+    void TriggerGameOver()
+    {
+        gameOverTriggered = true;
+
+        string winnerName;
+
+        if (playerName == "Player1")
+        {
+            winnerName = "Player2";
+        }
+        else
+        {
+            winnerName = "Player1";
+        }
+
+        GameOverManager gameOver = FindAnyObjectByType<GameOverManager>();
+
+        if (gameOver != null)
+        {
+            gameOver.ShowGameOver(winnerName);
+        }
+        else
+        {
+            Debug.LogError("GameOverManager NOT FOUND");
+        }
+
+        gameObject.SetActive(false);
     }
 }
