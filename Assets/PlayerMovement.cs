@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
+
     [Header("Settings")]
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpingPower = 12f;
     [SerializeField] float airControl = 0.9f;
+
     [Header("Grounding")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheck;
@@ -44,11 +46,11 @@ public class PlayerMovement : MonoBehaviour
         // Flip direction
         if (horizontal > 0)
         {
-            transform.localScale = new Vector3(-0.5f, 0.49005f, 1);
+            transform.localScale = new Vector3(0.5f, 0.49005f, 1);
         }
         else if (horizontal < 0)
         {
-            transform.localScale = new Vector3(0.5f, 0.49005f, 1);
+            transform.localScale = new Vector3(-0.5f, 0.49005f, 1);
         }
     }
 
@@ -64,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
         }
+
         if (context.canceled && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.4f);

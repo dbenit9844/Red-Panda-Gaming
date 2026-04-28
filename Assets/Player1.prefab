@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 2869115160038233924}
   - component: {fileID: 6072967469761928598}
   - component: {fileID: -8162801011511986096}
+  - component: {fileID: 5125690082927115418}
+  - component: {fileID: -4457148694394189618}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -346,11 +348,12 @@ MonoBehaviour:
   rb: {fileID: 2477959613797624275}
   speed: 8
   jumpingPower: 10
+  airControl: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 6268213594512116073}
-  airControl: 1
+  groundBoxSize: {x: 0.3, y: 0.1}
 --- !u!114 &-8162801011511986096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,8 +366,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e020f764ea21144f995c607844940ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  playerName: Player1
   maxHealth: 100
   currentHealth: 0
   maxLives: 3
   currentLives: 0
   respawnPoint: {fileID: 0}
+--- !u!95 &5125690082927115418
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610554948963786572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9b031776774f8c458fab448e0c18f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4457148694394189618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610554948963786572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294ad5fa9599cff4ebe0f1599c6a7da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
