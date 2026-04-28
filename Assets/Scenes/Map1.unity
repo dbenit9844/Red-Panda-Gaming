@@ -805,6 +805,8 @@ GameObject:
   - component: {fileID: 1537231714}
   - component: {fileID: 1537231713}
   - component: {fileID: 1537231716}
+  - component: {fileID: 1537231717}
+  - component: {fileID: 1537231718}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -1105,11 +1107,46 @@ MonoBehaviour:
   rb: {fileID: 1537231714}
   speed: 8
   jumpingPower: 10
+  airControl: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 1713383131}
-  airControl: 1
+  groundBoxSize: {x: 0.3, y: 0.1}
+--- !u!95 &1537231717
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537231710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9b031776774f8c458fab448e0c18f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1537231718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537231710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294ad5fa9599cff4ebe0f1599c6a7da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
 --- !u!1 &1574056617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1209,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1537231712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1745555125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9013638744750988739, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
+  m_PrefabInstance: {fileID: 3667947988257326273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1745555133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745555125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294ad5fa9599cff4ebe0f1599c6a7da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
 --- !u!1 &1914045772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,11 +1542,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234559040666427329, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 1234559040666427329, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 1.63
       objectReference: {fileID: 0}
     - target: {fileID: 1234559040666427329, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1526,6 +1580,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6589574234378742514, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589574234378742514, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9013638744750988739, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_Name
       value: Player2
@@ -1533,7 +1595,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9013638744750988739, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1745555133}
   m_SourcePrefab: {fileID: 100100000, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
