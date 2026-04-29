@@ -17,10 +17,4 @@ public class MenuButtons : MonoBehaviour
         Application.Quit();
         Debug.Log("Player Said I quit");
     }
-
-    //Load Levels
-    public void LoadLevel(int level)
-    {
-        SceneManager.LoadScene(level);
-    }
 }

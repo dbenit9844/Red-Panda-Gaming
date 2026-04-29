@@ -1012,14 +1012,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3a5fa4de-c3bb-4818-8bb3-0ba815cfc461
-    m_ActionName: Player/Attack1
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: edb24f7b-a106-4a29-95f4-c3a49970b6af
-    m_ActionName: Player/Attack2
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1113,12 +1105,11 @@ MonoBehaviour:
   rb: {fileID: 1537231714}
   speed: 8
   jumpingPower: 10
-  airControl: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 1713383131}
-  groundBoxSize: {x: 0.3, y: 0.1}
+  airControl: 1
 --- !u!1 &1574056617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,10 +1525,6 @@ PrefabInstance:
     - target: {fileID: 1234559040666427329, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589574234378742514, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9013638744750988739, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
       propertyPath: m_Name
