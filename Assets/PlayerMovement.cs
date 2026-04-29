@@ -7,18 +7,18 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
-
     [Header("Settings")]
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpingPower = 12f;
     [SerializeField] float airControl = 0.9f;
-
     [Header("Grounding")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 groundBoxSize = new Vector2(0.3f, 0.1f);
 
     private float horizontal;
+    private Animator animator;
+    private bool isAttacking = false;
 
     // EXPOSED VALUES FOR ANIMATION
     public float Horizontal => horizontal;
@@ -28,14 +28,18 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        float control = IsGrounded() ? 1f : airControl;
-        float targetSpeed = horizontal * speed;
-        float newX = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, control);
-        rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
+        if (!isAttacking)
+        {
+            float control = IsGrounded() ? 1f : airControl;
+            float targetSpeed = horizontal * speed;
+            float newX = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, control);
+            rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
+        }
 
         // Better fall feel
         if (rb.linearVelocity.y < 0)
@@ -66,11 +70,40 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
         }
-
         if (context.canceled && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.4f);
         }
+    }
+
+    public void LightAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isAttacking = true;
+            if (IsGrounded())
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetTrigger("LightAttack");
+            StartCoroutine(ResetAttack());
+        }
+    }
+
+    public void HeavyAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isAttacking = true;
+            if (IsGrounded())
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetTrigger("HeavyAttack");
+            StartCoroutine(ResetAttack());
+        }
+    }
+
+    private IEnumerator ResetAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
     }
     #endregion
 
