@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private Animator animator;
     private bool isAttacking = false;
+    private PlayerCombat combat;
 
     // EXPOSED VALUES FOR ANIMATION
     public float Horizontal => horizontal;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        combat = GetComponent<PlayerCombat>();
     }
 
     private void FixedUpdate()
@@ -84,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if (IsGrounded())
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetTrigger("LightAttack");
+            combat.LightAttack();
             StartCoroutine(ResetAttack());
         }
     }
@@ -96,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
             if (IsGrounded())
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetTrigger("HeavyAttack");
+            combat.HeavyAttack();
             StartCoroutine(ResetAttack());
         }
     }
