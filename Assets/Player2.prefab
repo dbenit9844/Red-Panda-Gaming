@@ -372,7 +372,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4600291524384429548, guid: 515cb63e5adf8f040baaaeb8b312b7a4, type: 3}
   m_Color: {r: 0.026265591, g: 0.02626903, b: 0.02641511, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 5.12}
