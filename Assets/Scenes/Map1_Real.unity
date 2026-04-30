@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 851491456}
   - component: {fileID: 851491455}
   - component: {fileID: 851491454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 1506778156}
   - component: {fileID: 1506778155}
   - component: {fileID: 1506778154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Upper Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1906,7 +1906,7 @@ GameObject:
   - component: {fileID: 1573230417}
   - component: {fileID: 1573230416}
   - component: {fileID: 1573230415}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,7 +2368,7 @@ GameObject:
   - component: {fileID: 1798453531}
   - component: {fileID: 1798453530}
   - component: {fileID: 1798453529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

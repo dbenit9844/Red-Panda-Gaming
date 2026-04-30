@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 165695278}
   - component: {fileID: 165695280}
   - component: {fileID: 165695279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddlePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 201889384}
   - component: {fileID: 201889386}
   - component: {fileID: 201889385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 336243120}
   - component: {fileID: 336243122}
   - component: {fileID: 336243121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightMiddlePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 585214596}
   - component: {fileID: 585214598}
   - component: {fileID: 585214597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightTopPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 645548321}
   - component: {fileID: 645548323}
   - component: {fileID: 645548322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftTopPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1185,7 @@ GameObject:
   - component: {fileID: 1008906315}
   - component: {fileID: 1008906317}
   - component: {fileID: 1008906316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 1100169943}
   - component: {fileID: 1100169945}
   - component: {fileID: 1100169944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnPlatform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2192,7 +2192,7 @@ GameObject:
   - component: {fileID: 1744624530}
   - component: {fileID: 1744624532}
   - component: {fileID: 1744624531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftMiddlePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
