@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 78833043682302304}
   - component: {fileID: 1137098023702434669}
   - component: {fileID: 6594954040553733487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6405035889945902523}
   - component: {fileID: 3588685549426220058}
   - component: {fileID: 4365240258443866588}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HeavyHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 809112275954040502}
   - component: {fileID: 639078705773764372}
   - component: {fileID: 2338951949604425912}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: -4457148694394189618}
   - component: {fileID: 7075171983620749305}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,6 +667,7 @@ MonoBehaviour:
     m_Bits: 256
   groundCheck: {fileID: 6268213594512116073}
   groundBoxSize: {x: 0.3, y: 0.1}
+  facingDirection: 1
 --- !u!114 &-8162801011511986096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,12 +680,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e020f764ea21144f995c607844940ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  playerName: Player1
+  playerName: Player
   maxHealth: 100
   currentHealth: 0
   maxLives: 3
   currentLives: 0
   respawnPoint: {fileID: 0}
+  spawnProtectionTime: 3
 --- !u!95 &5125690082927115418
 Animator:
   serializedVersion: 7

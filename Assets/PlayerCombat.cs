@@ -8,6 +8,19 @@ public class PlayerCombat : MonoBehaviour
     public float heavyAttackDuration = 0.3f;
     private bool isAttacking;
 
+    void Awake()
+    {
+        if (lightHitbox == null || heavyHitbox == null)
+        {
+            Hitbox[] hitboxes = GetComponentsInChildren<Hitbox>(true);
+            foreach (Hitbox hb in hitboxes)
+            {
+                if (hb.gameObject.name == "Hitbox") lightHitbox = hb;
+                if (hb.gameObject.name == "HeavyHitbox") heavyHitbox = hb;
+            }
+        }
+    }
+
     public void LightAttack()
     {
         if (isAttacking) return;

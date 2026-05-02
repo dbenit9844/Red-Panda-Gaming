@@ -7,6 +7,10 @@ public class Hurtbox : MonoBehaviour
     void Awake()
     {
         health = GetComponentInParent<PlayerHealth>();
+        if (health == null)
+        {
+            Debug.LogError($"[Hurtbox] No PlayerHealth found in parent of {gameObject.name}!");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -14,13 +18,11 @@ public class Hurtbox : MonoBehaviour
         Hitbox hitbox = other.GetComponent<Hitbox>();
         if (hitbox == null) return;
 
-        // Don't hit yourself
         if (other.transform.root == transform.root) return;
 
-        if (health != null)
-        {
-            Vector2 direction = (transform.position - other.transform.position).normalized;
-            health.TakeDamage(hitbox.damage, direction * hitbox.knockbackForce);
-        }
+        if (health == null) return;
+
+        Vector2 direction = (transform.position - other.transform.position).normalized;
+        health.TakeDamage(hitbox.damage, direction * hitbox.knockbackForce);
     }
 }

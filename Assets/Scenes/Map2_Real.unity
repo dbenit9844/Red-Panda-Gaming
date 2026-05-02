@@ -1705,6 +1705,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7202701c3cb92b4a9209772cf8a1f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KillZone
+--- !u!1 &1196997334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196997336}
+  - component: {fileID: 1196997335}
+  m_Layer: 0
+  m_Name: PlayerInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1196997335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196997334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInputManager
+  m_NotificationBehavior: 2
+  m_MaxPlayerCount: 2
+  m_AllowJoining: 1
+  m_JoinBehavior: 2
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2048851012}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: OnPlayerJoined
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 88fa43d4-3887-42b9-b730-08953f7ca2d8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 8610554948963786572, guid: 80eee2d6df4ba2344993e956168759b2, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!4 &1196997336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196997334}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.0027071207, w: 0.99999636}
+  m_LocalPosition: {x: -6.53, y: 3.56, z: 0}
+  m_LocalScale: {x: 0.905266, y: 0.905266, z: 0.905266}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.31}
 --- !u!1 &1443629610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,10 +2573,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dc74c8b3c7d9041bfffd22af8cee70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  player1Prefab: {fileID: 8610554948963786572, guid: 80eee2d6df4ba2344993e956168759b2, type: 3}
-  player2Prefab: {fileID: 9013638744750988739, guid: 007bb1dc062fd43499cba48da2de2866, type: 3}
-  player1Spawn: {fileID: 1509048941}
-  player2Spawn: {fileID: 1529434837}
+  spawnPoint1: {fileID: 1509048941}
+  spawnPoint2: {fileID: 1529434837}
+  player1Color: {r: 0, g: 0, b: 1, a: 1}
+  player2Color: {r: 1, g: 0, b: 0, a: 1}
   playerUI: {fileID: 1651461576}
 --- !u!4 &2048851013
 Transform:
@@ -2517,3 +2605,4 @@ SceneRoots:
   - {fileID: 1175910634}
   - {fileID: 694482969}
   - {fileID: 1651461577}
+  - {fileID: 1196997336}

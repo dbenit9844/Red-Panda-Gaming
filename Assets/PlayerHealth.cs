@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public string playerName = "Player1";
+    public string playerName = "Player";
     public int maxHealth = 100;
     public int currentHealth;
     public int maxLives = 3;
@@ -20,6 +20,14 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         currentLives = maxLives;
         rb = GetComponent<Rigidbody2D>();
+
+        // Auto name based on player index
+        PlayerInput input = GetComponent<PlayerInput>();
+        if (input != null)
+        {
+            playerName = "Player" + (input.playerIndex + 1);
+        }
+
         StartCoroutine(SpawnProtection());
     }
 
@@ -27,7 +35,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (gameOverTriggered) return;
         if (isInvincible) return;
-
         currentHealth -= damage;
         if (rb != null)
         {

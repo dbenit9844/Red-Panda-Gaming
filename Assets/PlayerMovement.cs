@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,21 +6,26 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
+
     [Header("Settings")]
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpingPower = 12f;
     [SerializeField] float airControl = 0.9f;
+
     [Header("Grounding")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 groundBoxSize = new Vector2(0.3f, 0.1f);
+
+    [Header("Facing Direction")]
+    [SerializeField] private int facingDirection = 1;
+    private bool facingDirectionSet = false;
 
     private float horizontal;
     private Animator animator;
     private bool isAttacking = false;
     private PlayerCombat combat;
 
-    // EXPOSED VALUES FOR ANIMATION
     public float Horizontal => horizontal;
     public bool IsGroundedValue => IsGrounded();
     public float VerticalVelocity => rb.linearVelocity.y;
@@ -31,6 +35,25 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         combat = GetComponent<PlayerCombat>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(SetFacingDirection());
+    }
+
+    private IEnumerator SetFacingDirection()
+    {
+        yield return null;
+
+        PlayerInput input = GetComponent<PlayerInput>();
+        if (input != null)
+        {
+            facingDirection = input.playerIndex == 0 ? 1 : -1;
+            transform.localScale = new Vector3(0.5f * facingDirection, 0.49005f, 1);
+            Debug.Log($"Player index: {input.playerIndex}, Facing: {facingDirection}");
+        }
+        facingDirectionSet = true;
     }
 
     private void FixedUpdate()
@@ -43,20 +66,15 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
         }
 
-        // Better fall feel
         if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * 2.5f * Time.fixedDeltaTime;
         }
 
-        // Flip direction
-        if (horizontal > 0)
+        if (facingDirectionSet && horizontal != 0)
         {
-            transform.localScale = new Vector3(0.5f, 0.49005f, 1);
-        }
-        else if (horizontal < 0)
-        {
-            transform.localScale = new Vector3(-0.5f, 0.49005f, 1);
+            float direction = Mathf.Sign(horizontal);
+            transform.localScale = new Vector3(0.5f * direction, 0.49005f, 1);
         }
     }
 

@@ -1,35 +1,55 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject player1Prefab;
-    public GameObject player2Prefab;
-
-    public Transform player1Spawn;
-    public Transform player2Spawn;
-
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Color player1Color = Color.blue;
+    public Color player2Color = Color.red;
     public PlayerUI playerUI;
+
+    private PlayerHealth player1Health;
+    private PlayerHealth player2Health;
 
     void Start()
     {
-        GameObject p1 = SpawnPlayer(player1Prefab, player1Spawn);
-        GameObject p2 = SpawnPlayer(player2Prefab, player2Spawn);
-
-        playerUI.player1Health = p1.GetComponent<PlayerHealth>();
-        playerUI.player2Health = p2.GetComponent<PlayerHealth>();
+        PlayerInputManager.instance.JoinPlayer(0);
+        PlayerInputManager.instance.JoinPlayer(1);
     }
 
-    GameObject SpawnPlayer(GameObject playerPrefab, Transform spawnPoint)
+    public void OnPlayerJoined(PlayerInput player)
     {
-        GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
-
-        PlayerHealth health = newPlayer.GetComponent<PlayerHealth>();
-
-        if (health != null)
+        if (player.playerIndex == 0)
         {
-            health.respawnPoint = spawnPoint;
+            player.transform.position = spawnPoint1.position;
+            PlayerHealth health = player.GetComponent<PlayerHealth>();
+            health.respawnPoint = spawnPoint1;
+            player1Health = health;
+            SetPlayerColor(player, player1Color);
+        }
+        else
+        {
+            player.transform.position = spawnPoint2.position;
+            PlayerHealth health = player.GetComponent<PlayerHealth>();
+            health.respawnPoint = spawnPoint2;
+            player2Health = health;
+            SetPlayerColor(player, player2Color);
         }
 
-        return newPlayer;
+        if (player1Health != null && player2Health != null && playerUI != null)
+        {
+            playerUI.player1Health = player1Health;
+            playerUI.player2Health = player2Health;
+        }
+    }
+
+    private void SetPlayerColor(PlayerInput player, Color color)
+    {
+        SpriteRenderer sr = player.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = color;
+        }
     }
 }
