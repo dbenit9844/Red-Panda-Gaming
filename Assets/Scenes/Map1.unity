@@ -1227,9 +1227,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1010877379}
-        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: Replay
+      - m_Target: {fileID: 1081731644}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadMapSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2790,8 +2790,8 @@ SceneRoots:
   - {fileID: 535677015}
   - {fileID: 1861516415}
   - {fileID: 273200693}
-  - {fileID: 1640483524}
   - {fileID: 699669355}
   - {fileID: 1270906740}
+  - {fileID: 1640483524}
   - {fileID: 1010877380}
   - {fileID: 1081731643}
